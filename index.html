@@ -70,6 +70,7 @@
           TEXTO: texto.value.trim(),
           // @ts-ignore
           TIMESTAMP: firebase.firestore.FieldValue.serverTimestamp()
+          
         });
       }
       /** Muestra los mensaje almacenados en la collection "MENSAJE". Se
@@ -78,7 +79,8 @@
         /* Consulta que se actualiza automáticamente. Pide todos los registros
          * de la colección "MENSAJE" ordenador por el campo "TIMESTAMP" de forma
          * descendiente. */
-        firestore.collection("MENSAJE").orderBy("TIMESTAMP", "desc")
+        firestore.collection("MENSAJE").orderBy("TIMESTAMP", "desc").
+.orderBy("AVATAR", "asc")
           .onSnapshot(
             /** Función que muestra los datos enviados por el servidor. Si los
              * datos cambian en el servidor, se vuelve a invocar esta función y
