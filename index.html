@@ -87,7 +87,7 @@
         /* Consulta que se actualiza automáticamente. Pide todos los registros
          * de la colección "MENSAJE" ordenador por el campo "TIMESTAMP" de forma
          * descendiente. */
-        firestore.collection("MENSAJE").orderBy("TIMESTAMP", "desc").collection("AVATAR")
+        firestore.collection("MENSAJE").orderBy("TIMESTAMP", "desc")
         .onSnapshot(
             /** Función que muestra los datos enviados por el servidor. Si los
              * datos cambian en el servidor, se vuelve a invocar esta función y
@@ -103,7 +103,7 @@
               querySnapshot.forEach(doc => {
                 // recupera los datos almacenados en el registro.
                 const data = doc.data();
-                
+              
                 var d = data.TIMESTAMP.toDate(),
                 dformat = [d.getDate(), d.getMonth()+1, d.getFullYear()].join('/')+' '+
                           [d.getHours(),d.getMinutes(),d.getSeconds()].join(':');
