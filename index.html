@@ -27,6 +27,7 @@
       // @ts-check
       /** Nombre de usuario atenticado por Firebase. */
       let usuario = "";
+      let avatar;
       /** Conexión al sistema de autenticación de Firebase. */
       // @ts-ignore
       const auth = firebase.auth();
@@ -47,6 +48,8 @@
             usuario = usuarioAuth.email;
             // Muestra los mensajes del chat.
             muestraMensajes();
+            //
+             avatar.src = usuarioAuth.photoURL;
           } else {
             // No ha iniciado sesión. Pide datos para iniciar sesión.
             await auth.signInWithRedirect(provider);
@@ -67,7 +70,11 @@
         firestore.collection("MENSAJE").add({
           USUARIO: usuario,
           // @ts-ignore
+          
           TEXTO: texto.value.trim(),
+          // @ts-ignore
+          
+          AVATAR: avatar,
           // @ts-ignore
           TIMESTAMP: firebase.firestore.FieldValue.serverTimestamp()
           
