@@ -54,7 +54,7 @@
             muestraMensajes();
            
             //muestre avatar 
-         
+          avatar.src = usuarioAuth.photoURL;
           } else {
             // No ha iniciado sesión. Pide datos para iniciar sesión.
             await auth.signInWithRedirect(provider);
